@@ -1,0 +1,34 @@
+<odoo>
+    <data>
+        <!--Edit Form Partner-->
+        <record id="acc__m_s_view_partner_form" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='trust']" position="after">
+                    <field name="total_amount_due"/>
+                    <field name="maximum_amount_due"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!--Edit Form Invoice-->
+        <record id="acc_m_s_view_account_invoice_form" model="ir.ui.view">
+            <field name="name">account.invoice.form.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="total_amount_due"/>
+                </xpath>
+                <xpath expr="//field[@name='date_invoice']" position="after">
+                    <field name="maximum_amount_due"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
